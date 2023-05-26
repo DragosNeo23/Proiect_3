@@ -1,0 +1,2 @@
+Adidas,vara,40,5,100
+Nike,iarna,36,20,200
