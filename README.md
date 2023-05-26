@@ -1,1 +1,1 @@
-# Proiect_3
+Ciobanu Dragos-Alexandru, grupa 3122A
