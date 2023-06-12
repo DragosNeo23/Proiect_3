@@ -12,7 +12,7 @@ namespace Gestiune_haine
         public static List<Haine> toateHainele = new List<Haine>();
         public Haine getHaine(string nume)
         {
-            using (StreamReader streamReader = new StreamReader(Gestiune.txt))
+            using (StreamReader streamReader = new StreamReader("C:\\Users\\Andu\\source\\repos\\Proiect_3\\Gestiune.txt"))
             {
                 string linieFisier;
                 string[] linieSplit;
