@@ -1,4 +1,4 @@
-﻿using Gestiune_haine;
+using Gestiune_haine;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -13,50 +13,83 @@ namespace Proiect_3
 {
     public partial class Form1 : Form
     {
-        AdministrareHaine adminHaine;
-        AdministareVanzari adminVanzari;
+        private string ProducatorAdaugat = "";
+        private string TipAdaugat = "";
+        private string MarimeSelectata;
+        private string PretSelectat;
+        private List<Haine> hainele = new List<Haine>();
+        public Form1()
+        {
 
-        private Label lblHeaderMarime;
-        private Label lblHeaderProducator;
-        private Label lblHeaderTip;
-        private Label lblHeaderPret;
-        private Label lblHeaderNrbucati;
+            InitializeComponent();
+          
 
-        private Label[] lblsMarime;
-        private Label[] lblsProducator;
-        private Label[] lblsTip;
-        private Label[] lblsPret;
-        private Label[] lblsNrbucati;
-
-        private Label lblHeaderID;
-        private Label lblHeaderProducator;
-        private Label lblHeaderModel;
-        private Label lblHeaderCuloare;
-        private Label lblHeaderAnFabricare;
-        private Label lblHeaderPret;
-        private Label lblHeaderStatus;
-
-        private Label[] lblHeaderID;
-        private Label[] lblHeaderProducator;
-        private Label[] lblHeaderModel;
-        private Label[] lblHeaderCuloare;
-        private Label[] lblHeaderAnFabricare;
-        private Label[] lblHeaderPret;
-        private Label[] lblHeaderStatus;
-
-        private const int LATIME_CONTROL = 120;
-        private const int DIMENSIUNE_PAS_Y = 20;
-        private const int DIMENSIUNE_PAS_X = 120;
-        private const int OFFSET_Y = 30;
-        private const int OFFSET_X = 500;
-
-
-
-
-
-        private void Form1_Load(object sender, EventArgs e)
+        }
+        
+         private void Form1_Load(object sender, EventArgs e)
         {
 
         }
+
+        private void btn_S_CheckedChanged(object sender, EventArgs e)
+        {
+            MarimeSelectata = "Marimea S";
+        }
+
+        private void btn_M_CheckedChanged(object sender, EventArgs e)
+        {
+            MarimeSelectata = "Marimea M";
+        }
+
+        private void btn_L_CheckedChanged(object sender, EventArgs e)
+        {
+            MarimeSelectata = "Marimea L";
+        }
+
+        private void btn_iarna_CheckedChanged(object sender, EventArgs e)
+        {
+            TipAdaugat = "Haine de iarna";
+        }
+
+        private void tip_vara_CheckedChanged(object sender, EventArgs e)
+        {
+            TipAdaugat = "Haine de vara";
+        }
+
+        private void add_click_Click(object sender, EventArgs e)
+        {
+            if (producator.Text == string.Empty || TipAdaugat == string.Empty || MarimeSelectata == string.Empty || pret.Text == string.Empty)
+                return;
+            var haine = new Haine(producator.Text, pret.Text, TipAdaugat, MarimeSelectata);
+            hainele.Add(haine);
+
+            ProducatorAdaugat = producator.Text;
+            PretSelectat = pret.Text;
+            producator.ResetText();
+            pret.ResetText();
+            return;
+        }
+
+        private void afisare_Click_Click(object sender, EventArgs e)
+        {
+            if (hainele.Count == 0)
+                return;
+
+            dataGrid.Columns.Clear();
+            dataGrid.Columns.Add("Producator", "Producator");
+            dataGrid.Columns.Add("Tip", "Tip");
+            dataGrid.Columns.Add("Marime", "Marime");
+            dataGrid.Columns.Add("Magazin", "Magazin");
+
+            foreach (var haine in hainele)
+            {
+                int randNou = dataGrid.Rows.Add();
+                dataGrid.Rows[randNou].Cells[0].Value = haine.Producator;
+                dataGrid.Rows[randNou].Cells[1].Value = haine.Tip;
+                dataGrid.Rows[randNou].Cells[2].Value = haine.Marime;
+                dataGrid.Rows[randNou].Cells[3].Value = haine.Pret;
+            }
+        }
     }
+    
 }
