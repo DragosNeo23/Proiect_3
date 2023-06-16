@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,15 +11,22 @@ namespace Gestiune_haine
         string nume;
         string producator;
         string tip;
-        int marime;
+        string marime;
         int nrBucati;
         float pret;
-        public Haine(string producator_, string tip_, int marime_,  int nrBucati_, float pret_)
+        public Haine(string producator_, string tip_, string marime_,  int nrBucati_, float pret_)
         {
             producator = producator_;
             tip = tip_;
             marime = marime_;
             nrBucati = nrBucati_;
+            pret = pret_;
+        }
+        public Haine(string producator_, string tip_, string marime_, float pret_)
+        {
+            producator = producator_;
+            tip = tip_;
+            marime = marime_;
             pret = pret_;
         }
 
@@ -33,7 +40,7 @@ namespace Gestiune_haine
             get { return tip; }
             set { tip = value; }
         }
-        public int Marime
+        public string Marime
         {
             get { return marime; }
             set { marime = value; }
