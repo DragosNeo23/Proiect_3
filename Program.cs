@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.IO;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,7 +22,7 @@ namespace Gestiune_haine
                     linieSplit = linieFisier.Split(';');
                     if (linieSplit[1] == nume)
                     {
-                        return new Haine(i, nume);
+                        return new Haine(linieSplit[0], nume, linieSplit[2], int.Parse(linieSplit[3]), float.Parse(linieSplit[4]));
                     }
                     i++;
                 }
@@ -56,7 +56,6 @@ namespace Gestiune_haine
 
                     foreach (Haine hn in toateHainele)
                     {
-                        //afiseaza toate hainele din fisier dupa ce au fost convertite in obiecte
                         Console.WriteLine(hn.ToString());
                     }
                     return true;
@@ -67,7 +66,7 @@ namespace Gestiune_haine
                     Console.WriteLine("Introduceti tipul de haine (vara/iarna)");
                     string tip = Console.ReadLine();
                     Console.WriteLine("Introduceti marime");
-                    int marime = int.Parse(Console.ReadLine());
+                    string marime = Console.ReadLine();
                     Console.WriteLine("Introduceti nr bucati");
                     int nrBucati = int.Parse(Console.ReadLine());
                     Console.WriteLine("Introduceti pret");
@@ -105,7 +104,7 @@ namespace Gestiune_haine
                 while (line != null)
                 {
                     string[] result = line.Split(',');
-                    toateHainele.Add(new Haine(result[0], result[1], int.Parse(result[2]), int.Parse(result[3]), float.Parse(result[6])));
+                    toateHainele.Add(new Haine(result[0], result[1], result[2], int.Parse(result[3]), float.Parse(result[6])));
                      line = sr.ReadLine();
                 }
                 //close the file
