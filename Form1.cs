@@ -60,7 +60,7 @@ namespace Proiect_3
         {
             if (producator.Text == string.Empty || TipAdaugat == string.Empty || MarimeSelectata == string.Empty || pret.Text == string.Empty)
                 return;
-            var haine = new Haine(producator.Text, pret.Text, TipAdaugat, MarimeSelectata);
+            var haine = new Haine(producator.Text, TipAdaugat, MarimeSelectata, float.Parse(pret.Text));
             hainele.Add(haine);
 
             ProducatorAdaugat = producator.Text;
